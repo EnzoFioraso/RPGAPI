@@ -3182,11 +3182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\2DS\\Guilherme\\DS1\\ExercicioRpgApi\\RPGProject\\RpgApi\\RpgApi.csproj",
+      "projectUniqueName": "D:\\RPGAPI\\RPGAPI\\RpgApi.csproj",
       "projectName": "RpgApi",
-      "projectPath": "D:\\2DS\\Guilherme\\DS1\\ExercicioRpgApi\\RPGProject\\RpgApi\\RpgApi.csproj",
+      "projectPath": "D:\\RPGAPI\\RPGAPI\\RpgApi.csproj",
       "packagesPath": "D:\\NugetPackages",
-      "outputPath": "D:\\2DS\\Guilherme\\DS1\\ExercicioRpgApi\\RPGProject\\RpgApi\\obj\\",
+      "outputPath": "D:\\RPGAPI\\RPGAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3685,7 +3685,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'Microsoft.OpenApi' 2.0.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
