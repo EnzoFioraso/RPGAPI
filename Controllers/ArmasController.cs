@@ -10,31 +10,29 @@ using Microsoft.Extensions.Logging;
 using RpgApi.Data;
 using RpgApi.Models;
 
-
 namespace RpgApi.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    public class PersonagensController : ControllerBase
+    public class ArmasController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public PersonagensController(DataContext context)
+        public ArmasController(DataContext context)
         {
 
             _context = context;
         }
 
-        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingle(int id)
         {
             try
             {
-                Personagem p = await _context.TB_PERSONAGENS//esse ponto significa pra pegar todos os personagens
-                .FirstOrDefaultAsync(pBusca => pBusca.Id == id);
+                Armas a = await _context.TB_ARMAS//esse ponto significa pra pegar todos os personagens
+                .FirstOrDefaultAsync(aBusca => aBusca.Id == id);
 
-                return Ok(p);
+                return Ok(a);
             }
             catch (System.Exception ex)
             {
@@ -46,7 +44,7 @@ namespace RpgApi.Controllers
         {
             try
             {
-                List<Personagem> lista = await _context.TB_PERSONAGENS.ToListAsync();
+                List<Armas> lista = await _context.TB_ARMAS.ToListAsync();
                 return Ok(lista);
             }
             catch (System.Exception ex)
@@ -56,18 +54,18 @@ namespace RpgApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Personagem novoPersonagem)
+        public async Task<IActionResult> Add(Armas novaArma)
         {
             try
             {
-                if (novoPersonagem.PontosVida > 150)
+                if (novaArma.Dano > 150)
                 {
                     throw new Exception("Pontos de Vida muito altos para este personagem ser criado!");
                 }
 
-                await _context.TB_PERSONAGENS.AddAsync(novoPersonagem);
+                await _context.TB_ARMAS.AddAsync(novaArma);
                 await _context.SaveChangesAsync();
-                return Ok (novoPersonagem.Id);
+                return Ok(novaArma.Id);
 
             }
             catch (System.Exception ex)
@@ -76,19 +74,19 @@ namespace RpgApi.Controllers
             }
         }
 
-[HttpPut]
-public async Task<IActionResult> Update(Personagem novoPersonagem)
- {
+        [HttpPut]
+        public async Task<IActionResult> Update(Armas novaArma)
+        {
             try
             {
-                if (novoPersonagem.PontosVida > 150)
+                if (novaArma.Dano > 150)
                 {
-                    throw new Exception("Pontos de Vida muito altos para este personagem ser criado!");
+                    throw new Exception("Danos muito altos para este personagem ser criado!");
                 }
-                _context.TB_PERSONAGENS.Update(novoPersonagem);
+                _context.TB_ARMAS.Update(novaArma);
                 int linhasAfetadas = await _context.SaveChangesAsync();
-                return Ok(linhasAfetadas); 
-                
+                return Ok(linhasAfetadas);
+
             }
             catch (System.Exception ex)
             {
@@ -96,18 +94,18 @@ public async Task<IActionResult> Update(Personagem novoPersonagem)
             }
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult>Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                Personagem pRemover = await _context.TB_PERSONAGENS.FirstOrDefaultAsync(p => p.Id == id);
-                
-                _context.TB_PERSONAGENS.Remove(pRemover);
+                Armas aRemover = await _context.TB_ARMAS.FirstOrDefaultAsync(a => a.Id == id);
+
+                _context.TB_ARMAS.Remove(aRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();
                 return Ok(linhasAfetadas);
 
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -115,3 +113,4 @@ public async Task<IActionResult> Update(Personagem novoPersonagem)
 
     }
 }
+
